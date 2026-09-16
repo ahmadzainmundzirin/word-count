@@ -1,5 +1,3 @@
-!pip install streamlit pypdf
-
 import streamlit as st
 from pypdf import PdfReader
 import pandas as pd
