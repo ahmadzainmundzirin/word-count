@@ -17,7 +17,6 @@ st.write("Unggah satu atau beberapa file PDF, masukkan kata kunci, dan dapatkan 
 st.sidebar.header("⚙️ Pengaturan Pencarian")
 case_sensitive = st.sidebar.checkbox("Peka Huruf Besar/Kecil (Case Sensitive)", value=False)
 exact_match = st.sidebar.checkbox("Kata Utuh Sahaja / Exact Word Match (contoh: 'erp' bukan 'interpretasi')", value=True)
-max_snippets = st.sidebar.number_input("Maksimal Cuplikan per Kata per Halaman", min_value=1, max_value=5, value=2)
 
 # 1. Upload Multiple File PDF
 uploaded_files = st.file_uploader(
@@ -76,7 +75,7 @@ if uploaded_files and input_keywords:
                             
                             # Mengambil cuplikan teks
                             snippets = []
-                            for match in matches[:max_snippets]:
+                            for match in matches:
                                 start = max(0, match.start() - 35)
                                 end = min(len(text), match.end() + 35)
                                 snippet = text[start:end].replace("\n", " ").strip()
